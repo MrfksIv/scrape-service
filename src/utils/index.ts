@@ -30,7 +30,10 @@ export function getTimestampFromDatetimeString(datetimeString: string, dateTimeS
     return moment(`${yyyy}-${mm}-${dd}T${time}:00`).toDate().getTime();
 }
 
-export function runScheduledTask(task: () => void, taskInterval=process.env.SERVICE_RUN_INTERVAL) {
-    task.call(null);
-    setInterval( () => task.call(null), Number(taskInterval));
+export async function sleep(ms: number) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve()
+        }, ms);
+    })
 }

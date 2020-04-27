@@ -27,7 +27,7 @@ No Omonoia match on that date, (APOEL was playing in GSP [link](https://www.worl
 So probably at home or out with friends since it is a Saturday - very limited info to go on!  
 
 #### Where possibly was John in the evening of 15.01.2020?
-on 8.1.2020 he was in the commercial downtown area of Paphos. One could assume that
+On 8.1.2020 he was in the commercial downtown area of Paphos. One could assume that
 this is where he works. So a week later it is likely he will be at the same place
 since it is a weekday.
 
@@ -36,7 +36,7 @@ A week before that he was at a Krav Maga class so if this is a weekly class ther
 good chance he will be there.
 
 #### What do you believe is the marital status of Robert? (BONUS)
-He was at kids place on 13.01.2020 so one could assume that probably he is or has been married.
+He was at a  kids place on 13.01.2020 so one could assume that probably he is or has been married.
 
 #### What other intel could you infer about John and Robert? (BONUS)
 John supports PaphosFC while Robert supports Omonoia (match details [here](https://www.worldfootball.net/schedule/cyp-first-division-2019-2020-spieltag/16/))

@@ -1,26 +1,29 @@
-import { parseWebsite, loadHTML } from '../helpers';
+import { loadWebsite, loadHTML } from '../helpers';
 import { NameAgeSexProfInfo, Location, Profile } from '../entities';
 import { getTimestampFromDatetimeString } from '../utils';
 
 const CHECKIN_HISTORY_PLACEHOLDER = 'Check-in history:';
 
 export async function parseProfilesFromWebsite(): Promise<Profile[]> {
-    const content = await parseWebsite(process.env.SCRAPE_SITE_URL);
+    return new Promise( (resolve, reject) => {
+         loadWebsite(process.env.SCRAPE_SITE_URL).then(content => {
+            const html = loadHTML(content);
+            const textareaContent = html('#paste_code').html();
+            const unparsedProfileArray = textareaContent.split('\n\n');
 
-    const html = loadHTML(content);
-    const textareaContent = html('#paste_code').html();
-    const unparsedProfileArray = textareaContent.split('\n\n');
+            const profiles = unparsedProfileArray.map((unparsedProfile) => {
 
-    const profiles = unparsedProfileArray.map((unparsedProfile) => {
+                const nameAgeSexProfessionObj = parseNameAgeSexProfInfo(unparsedProfile);
+                const locationsObj = parseLocationInfo(unparsedProfile);
 
-        const nameAgeSexProfessionObj = parseNameAgeSexProfInfo(unparsedProfile);
-        const locationsObj = parseLocationInfo(unparsedProfile);
+                const profile: Profile = {...nameAgeSexProfessionObj, locations: locationsObj};
+                return profile;
+            });
 
-        const profile: Profile = {...nameAgeSexProfessionObj, locations: locationsObj};
-        return profile;
-    });
+            resolve(profiles);
+        });
+    })
 
-    return profiles;
 }
 
 function parseLocationInfo(unparsedProfile: string): Location[] {
