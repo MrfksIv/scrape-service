@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { QueryController } from '../../controllers/QueryController';
-import {getGMapsInfoFromLocation} from "../../helpers";
 
 const router = Router();
 const queryController = QueryController.getInstance();

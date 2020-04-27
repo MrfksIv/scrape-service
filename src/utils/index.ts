@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 
-export function removeTimeFromDateNumber(miliseconds: number): number {
-    const newDate = new Date(miliseconds);
+export function removeTimeFromDateNumber(milliseconds: number): number {
+    const newDate = new Date(milliseconds);
     newDate.setHours(0, 0, 0, 0);
     return newDate.getTime();
 }

@@ -1,6 +1,6 @@
 import { default as axios } from 'axios';
 import {GMapsInfo, Location} from '../entities';
-import * as winston from "winston";
+import * as winston from 'winston';
 
 export async function getGMapsInfoFromLocation(location: Location): Promise<GMapsInfo | null> {
     const gmapsEndpoint = process.env.G_MAPS_API_ENDPOINT;

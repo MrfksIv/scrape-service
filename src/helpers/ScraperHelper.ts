@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
-import {default as axios} from "axios";
-import * as winston from "winston";
+import {default as axios} from 'axios';
+import * as winston from 'winston';
 
 let $: CheerioStatic | null = null;
 

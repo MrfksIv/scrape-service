@@ -5,7 +5,7 @@ type Json = {[key: string]: number | string | null | undefined | Json | Date};
 export enum ErrorType {
     SERVER = 'SERVER.ERROR',
     VALIDATION = 'VALIDATION.ERROR',
-    NOT_FOUND = '404_ROUTE_NOT_FOUND',
+    NOT_FOUND = '404.ROUTE.NOT.FOUND',
 }
 
 export class ServiceError extends Error {
