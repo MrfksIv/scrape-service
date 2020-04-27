@@ -5,12 +5,12 @@ import * as winston from "winston";
 let $: CheerioStatic | null = null;
 
 
-export async function loadWebsite(url: string): Promise<string | null> {
+export async function fetchWebsite(url: string): Promise<string | null> {
     try {
         const result = await axios.get(url);
         return result.data;
     } catch (e) {
-        winston.error('ScraperHelper.loadWebsite: ', e);
+        winston.error('ScraperHelper.fetchWebsite: ', e);
         return null;
     }
 }

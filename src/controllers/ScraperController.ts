@@ -1,4 +1,4 @@
-import { loadWebsite, loadHTML } from '../helpers';
+import { fetchWebsite, loadHTML } from '../helpers';
 import { NameAgeSexProfInfo, Location, Profile } from '../entities';
 import { getTimestampFromDatetimeString } from '../utils';
 
@@ -6,7 +6,7 @@ const CHECKIN_HISTORY_PLACEHOLDER = 'Check-in history:';
 
 export async function parseProfilesFromWebsite(): Promise<Profile[]> {
     return new Promise( (resolve, reject) => {
-         loadWebsite(process.env.SCRAPE_SITE_URL).then(content => {
+         fetchWebsite(process.env.SCRAPE_SITE_URL).then(content => {
             const html = loadHTML(content);
             const textareaContent = html('#paste_code').html();
             const unparsedProfileArray = textareaContent.split('\n\n');

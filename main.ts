@@ -16,13 +16,13 @@ app.start();
 
 (async () => {
     while (true) {
-        winston.info('Parsing data from website...');
-        const profiles = await parseProfilesFromWebsite();
-        saveProfilesToStore(profiles);
-        winston.info('Parsing finished...');
-
+        try {
+            const profiles = await parseProfilesFromWebsite();
+            saveProfilesToStore(profiles);
+        } catch (error) {
+            winston.error('main.loop', error);
+        }
         await sleep(Number(process.env.SERVICE_RUN_INTERVAL));
-
     }
 })();
 
