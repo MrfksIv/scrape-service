@@ -16,12 +16,12 @@
 After the service is running you can view the swagger docs of the API by navigating to the url:
 http://localhost:3000/api-docs.
 
-If the default port 3000 has been changed from the `.env` file use that one instead.
+If the default port 3000 has been changed from the `.env` file, use that one instead.
 
 ## Part 2 Questions
 
 #### Which of the people above are most likely good friends?
-Jim and Robert were close( <= 2m apart) on 2 separate occasions during football matches on 10/01/2020 and 22/12/2020
+Jim and Robert since they were close( <= 2m apart) on 2 separate occasions during football matches on 10/01/2020 and 22/12/2020
 
 #### Where is Jim likely to be in the evening of 15.02.2020?
 No Omonoia match on that date, (APOEL was playing in GSP [link](https://www.worldfootball.net/schedule/cyp-first-division-2019-2020-spieltag/20/)).
