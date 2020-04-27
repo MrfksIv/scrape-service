@@ -4,6 +4,7 @@
 - Before using the service you will need to have Node.js ( >= v12.13) installed on your system. 
 - You will need to add a valid google maps API key in the .env file under the `G_MAPS_API_KEY` This was sent in a separate email since the repository is public.
 ### Starting the service
+- Firstly, install the dependencies by running `npm install` from the terminal.
 - From the terminal run `npm start`.
 - To compile the Javascript `.js` files from the Typescript `.ts` source files use the command `npm run build`.
 

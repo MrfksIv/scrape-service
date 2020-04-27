@@ -4,10 +4,11 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "build": "node_modules/typescript/bin/tsc",
+    "build": "tsc",
     "prestart": "npm run build",
     "start": "node ./main.js",
-    "test": "npm run build && node_modules/mocha/bin/mocha --recursive"
+    "pretest": "npm run build",
+    "test": "mocha --recursive"
   },
   "keywords": [],
   "author": "",
