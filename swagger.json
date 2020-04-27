@@ -1,0 +1,161 @@
+{
+  "swagger":"2.0",
+  "info":{
+    "description":"Docs for the Pastebin scrape service",
+    "version":"1.0.5",
+    "title":"Scrape and Query Profile Locations",
+    "termsOfService":"http://swagger.io/terms/",
+    "license":{
+      "name":"Apache 2.0",
+      "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host":"localhost:3000",
+  "basePath":"/query",
+  "paths": {
+    "/by-age-sex": {
+      "post":{
+        "tags":[
+          "query"
+        ],
+        "summary":"Searches profiles by sex and age condition",
+        "consumes":[
+          "application/x-www-form-urlencoded"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "name":"age",
+            "in":"formData",
+            "description":"Age to search",
+            "required":true,
+            "default": 30,
+            "type":"integer",
+            "format":"int64"
+          },
+          {
+            "name":"condition",
+            "in":"formData",
+            "description":"Condition to use with age",
+            "required":true,
+            "default": "GT",
+            "type":"string",
+            "enum": ["GT", "GTE", "LT", "LTE", "EQ", "NE"]
+          },
+          {
+            "name":"sex",
+            "in":"formData",
+            "description":"Search by Sex",
+            "required":true,
+            "default": "male",
+            "type":"string",
+            "enum": ["male", "female"]
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"successful operation"
+          },
+          "400":{
+            "description": "Validation error"
+          },
+          "500":{
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/by-names-date": {
+      "post":{
+        "tags":[
+          "query"
+        ],
+        "summary":"Searches locations by names array and date",
+        "consumes":[
+          "application/x-www-form-urlencoded"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "name":"names",
+            "in":"formData",
+            "description":"Profile Names to search. Must be a VALID STRINGIFIED array",
+            "required":true,
+            "default": "[\"Robert\",\"Jim\"]",
+            "type":"string",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name":"date",
+            "in":"formData",
+            "description":"Search by date. Accepts formats: [dd.mm.yyyy, dd/mm/yyyy, dd-mm-yyyy]",
+            "required":true,
+            "default": "10.01.2020",
+            "type":"string"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"successful operation"
+          },
+          "400":{
+            "description": "Validation error"
+          },
+          "500":{
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/by-proximity-daterange": {
+      "post":{
+        "tags":[
+          "query"
+        ],
+        "summary":"Returns a proximity summary locations by distance and daterange",
+        "consumes":[
+          "application/x-www-form-urlencoded"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "name":"proximity",
+            "in":"formData",
+            "description":"Maximum proximity between profiles that will be considered a hit.",
+            "required": true,
+            "default": 20,
+            "type":"integer",
+            "format":"int64"
+          },
+          {
+            "name":"daterange",
+            "in":"formData",
+            "description":"The date range in which to search for profile proximity. Must be a stringified JSON of the form {\"from\": [date]: \"to\": [date]}. Accepted date formats: [\"dd.mm.yyyy\", \"dd/mm/yyyy\", \"dd-mm-yyyy\"]",
+            "required":true,
+            "default": "{\"from\": \"01.01.2020\", \"to\":\"22.12.2020\"}",
+            "type":"string"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"successful operation"
+          },
+          "400":{
+            "description": "Validation error"
+          },
+          "500":{
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}
