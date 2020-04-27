@@ -15,6 +15,9 @@ export async function getGMapsInfoFromLocation(location: Location): Promise<GMap
 
     try {
         const locationInfo = await axios.get(url);
+        if (locationInfo.data.error_message) {
+            winston.error('GMapsHelper.getGMapsInfoFromLocation: ' + locationInfo.data.error_message);
+        }
         return locationInfo.data;
     } catch (error) {
         winston.error('GMapsHelper.getGMapsInfoFromLocation:', error);
